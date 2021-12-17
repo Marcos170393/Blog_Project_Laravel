@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-
+use App\Models\Catergory;
 class CategoriesController extends Controller
 {
     //Control de loguo
@@ -13,13 +13,20 @@ class CategoriesController extends Controller
     }   
     
     public function index(){
-        return view('admin.categories.index');
+
+        $list = Catergory::all();
+        return view('admin.categories.index')
+                ->with("categories",$list);
         
     }
 
     // ####### Metodo para crear categorias #########
     public function store(Request $request){
-            dump($request->all());
-            die();
+           
+              $category = new Catergory();
+              $category->name = $request->category;
+              $category->description = $request->description;
+              $category->save();
+              return redirect()->back();
     }
 }

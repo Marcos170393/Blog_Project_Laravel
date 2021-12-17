@@ -8,8 +8,8 @@ Route::get('/home',function(){
     return view('home');
 })->middleware('auth');
 
-Route::get('/admin/categories','App\Http\Controllers\Admin\CategoriesController@index')->name('admin.categories');
-Route::post('/admin/categories/store','App\Http\Controllers\Admin\CategoriesController@store')->name('admin.categories.store');
+Route::get('/admin/categories','App\Http\Controllers\Admin\CategoriesController@index')->name('admin.categories')->middleware('auth');
+Route::post('/admin/categories/store','App\Http\Controllers\Admin\CategoriesController@store')->name('admin.categories.store')->middleware('auth');
 
 Auth::routes();
 
