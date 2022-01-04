@@ -13,12 +13,12 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="post">Nombre</label>
-                        <input type="text" name="post" class="form-control" id="post" required value="{{$post->title}}">
+                        <input type="text" name="title" class="form-control" id="post" required value="{{$post->title}}">
                     </div>
                     <div class="form-group">
-                        <textarea for="cont">Contenido</textarea>
-                        <input type="text" name="content" class="form-control " id="cont" required value="{{$post->content}}">
-                    </div>
+                        <label for="cont">Contenido</label>
+                        <textarea type="text" name="content" class="form-control " id="cont" required  cols="50" rows="5">{{$post->content}}</textarea>
+</div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>

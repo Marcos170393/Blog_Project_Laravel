@@ -34,12 +34,14 @@
             <!-- /.card-header -->
             <div class="card-body">
                 <table id="posts" class="table table-bordered table-striped">
-                    <thead>
+                    <thead >
                         <tr>
                             <th>Id</th>
-                            <th>Post</th>
+                            <th>Título</th>
                             <th>Contenido</th>
-                            <th>Acciones</th>
+                            <th>Categoría</th>
+                            <th>Autor</th>
+                            <th width="120px">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -49,6 +51,8 @@
                            <td>{{$post->id}}</td>
                            <td>{{$post->title}}</td>
                            <td>{{$post->content}}</td>
+                           <td>{{$post->category->name}}</td>
+                           <td>{{$post->author}}</td>
                            <td class="text-center">
                                <div class="row">
                                    <div class="col-6">
@@ -72,9 +76,11 @@
                     <tfoot>
                         <tr>
                             <th>Id</th>
-                            <th>Nombre</th>
-                            <th>Descripción</th>
-                            <th>Acciones</th>
+                            <th>Título</th>
+                            <th>Contenido</th>
+                            <th>Categoría</th>
+                            <th>Autor</th>
+                            <th width="120px">Acciones</th>
                         </tr>
                     </tfoot>
                 </table>
@@ -102,12 +108,25 @@
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="post">Nombre</label>
-                        <input type="text" name="post" class="form-control" id="post" required>
+                        <label for="post">Título</label>
+                        <input type="text" name="title" class="form-control" id="post" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="cat">Categoría</label>
+                        <select name="category" class="form-control" id="cat">
+                            <option selected disabled>Elegir Categoría</option>
+                            @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
                     </div>
                     <div class="form-group">
                         <label for="cont">Contenido</label>
-                        <input type="text" name="content" class="form-control " id="cont" required>
+                        <textarea type="text" name="content" class="form-control " id="cont" required  cols="50" rows="5"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="auth">Autor</label>
+                        <input type="text" name="author" class="form-control " id="auth" required>
                     </div>
                 </div>
                 <div class="modal-footer justify-content-between">

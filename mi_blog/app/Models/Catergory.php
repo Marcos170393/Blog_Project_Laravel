@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Catergory;
 
 class Catergory extends Model
 {
@@ -13,6 +14,6 @@ class Catergory extends Model
     public $timestamps = true;
 
     public function posts(){
-        return $this->hasMany('App\Models\Post');
+        return $this->hasMany(Post::class);
     }
 }
