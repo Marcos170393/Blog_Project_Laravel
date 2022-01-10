@@ -8,7 +8,7 @@
                     <span aria-hidden="true">&times;</span></button>
             </div>
 
-            <form action="{{route('admin.posts.update', $post->id)}}" method="post">
+            <form action="{{route('admin.posts.update', $post->id)}}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
@@ -27,7 +27,13 @@
                     <div class="form-group">
                         <label for="cont">Contenido</label>
                         <textarea type="text" name="content" class="form-control " id="cont" required  cols="50" rows="5">{{$post->content}}</textarea>
-</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="featured">Cambiar imagen de portada</label>
+                        <input type="file" name="featured" class="form-control " id="featured" required>
+                    </div>
+                    <small>Imagen actual</small>
+                    <img src="{{asset($post->featured)}}" class="img-fluid img-thumbnail" alt="">
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>

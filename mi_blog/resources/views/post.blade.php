@@ -8,29 +8,18 @@
         <div class="row justify-content-center">
             <!-- Post -->
             <div class="col-12 col-md-7 text-center">
-                <h1>POO con Javascript, feo pero posible</h1>
+                <h1>{{$post->title}}</h1>
                 <hr>
-                <img src="images/8.png" alt="Post Javascript" class="img-fluid">
+                <img src="{{asset($post->featured)}}" alt="{{$post->name}}" class="img-fluid">
 
                 <p class="text-left mt-3 post-txt">
-                    <span>Autor: YouDevs</span>
-                    <span class="float-right">Publicado: Hace 2 semanas</span>
+                    <span class="text-info">Autor:</span> <i>{{$post->author}}</i>
+                    <span class="float-right text-info">Publicado:</span> <i>{{$post->created_at->diffForHumans()}}</i>
                 </p>
-                <p class="text-left">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eaque nemo accusantium libero hic repellat corporis assumenda
-                    debitis adipisci modi expedita inventore vel excepturi,
-                    facere animi accusamus? Voluptatem ab ad harum?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eaque nemo accusantium libero hic repellat corporis assumenda
-                    debitis adipisci modi expedita inventore vel excepturi,
-                    facere animi accusamus? Voluptatem ab ad harum?
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Eaque nemo accusantium libero hic repellat corporis assumenda
-                    debitis adipisci modi expedita inventore vel excepturi,
-                    facere animi accusamus? Voluptatem ab ad harum?
+                <p class="text-left" style="text-align: justify" >
+                   {{$post->content}}
                 </p>
-                <p class="text-left post-txt"><i>Categoría: Desarrollo web</i></p>
+                <p class="text-left post-txt"><i>Categoría: {{$post->category->name}}</i></p>
             </div>
 
             <!-- Entradas recientes -->

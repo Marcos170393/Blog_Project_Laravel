@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Catergory;
+use App\Models\Post;
 
 class HomeController extends Controller
 {
@@ -24,9 +25,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $cat = Catergory::find(3);
-        dd($cat->posts);
-        return view('index');
+        $categories = Catergory::all();
+        $posts = Post::all();
+       
+        return view('index')
+        ->with("categories",$categories)
+        ->with("posts",$posts);
     }
 
     public function post(){

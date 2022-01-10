@@ -38,6 +38,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Título</th>
+                            <th width="200px">Imagen</th>
                             <th>Contenido</th>
                             <th>Categoría</th>
                             <th>Autor</th>
@@ -50,6 +51,7 @@
                        <tr>
                            <td>{{$post->id}}</td>
                            <td>{{$post->title}}</td>
+                           <td><img src="{{asset($post->featured)}}" class="img-fluid img-thumbnail" alt=""></td>
                            <td>{{$post->content}}</td>
                            <td>{{$post->category->name}}</td>
                            <td>{{$post->author}}</td>
@@ -77,6 +79,7 @@
                         <tr>
                             <th>Id</th>
                             <th>Título</th>
+                            <th>Imagen</th>
                             <th>Contenido</th>
                             <th>Categoría</th>
                             <th>Autor</th>
@@ -104,7 +107,7 @@
                     <span aria-hidden="true">&times;</span></button>
             </div>
 
-            <form action="{{route('admin.posts.store')}}" method="post">
+            <form action="{{route('admin.posts.store')}}" method="post" enctype="multipart/form-data">
                 {{ csrf_field() }}
                 <div class="modal-body">
                     <div class="form-group">
@@ -128,6 +131,9 @@
                         <label for="auth">Autor</label>
                         <input type="text" name="author" class="form-control " id="auth" required>
                     </div>
+                   <div class="form-group">
+                       <input type="file" name="featured" class="form-control " id="featured" required>
+                   </div>
                 </div>
                 <div class="modal-footer justify-content-between">
                     <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cerrar</button>

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Post;
 use App\Models\Catergory;
+use File;
 class PostsController extends Controller
 {
      //Control de loguo
@@ -28,18 +29,37 @@ class PostsController extends Controller
     // // ####### Metodo para crear categorias #########
     public function store(Request $request){
            
-              $post = new Post();
-              $post->catergory_id = $request->category;
-              $post->content = $request->content;
-              $post->author = $request->author;
-              $post->title = $request->title;
-              $post->save();
-              return redirect()->back();
-    }
+        $post = new Post();
+            
+        if($request->hasFile("featured")){
+            $file = $request->file("featured");
+            $path = "images/featureds/";
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSuccess = $file->move($path, $filename);
+            $post->featured = $path . $filename;
+        }
+
+        $post->catergory_id = $request->category;
+        $post->content = $request->content;
+        $post->author = $request->author;
+        $post->title = $request->title;
+        $post->save();
+        return redirect()->back();
+}
 
     public function update(Request $request, $id){
            
         $post = Post::find($id);
+
+        if($request->hasFile("featured")){
+            File::delete($post->featured);
+            $file = $request->file("featured");
+            $path = "images/featureds/";
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $uploadSuccess = $file->move($path, $filename);
+            $post->featured = $path . $filename;
+        }
+
         $post->title = $request->title;
         $post->content = $request->content;
         $post->catergory_id = $request->category;
