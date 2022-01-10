@@ -42,16 +42,17 @@ class PostsController extends Controller
         $post = Post::find($id);
         $post->title = $request->title;
         $post->content = $request->content;
+        $post->catergory_id = $request->category;
         $post->update();
         return redirect()->back();
     }
    
-    // public function delete(Request $request, $id){
+    public function delete(Request $request, $id){
        
-    //     $post = Catergory::find($id);
-    //     $post->delete();
-    //     $post->save();
-    //     return redirect()->back();
-    // }
+        $post = Post::find($id);
+        $post->delete();
+        $post->save();
+        return redirect()->back();
+    }
     
 }

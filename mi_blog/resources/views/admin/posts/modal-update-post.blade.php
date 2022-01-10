@@ -16,6 +16,15 @@
                         <input type="text" name="title" class="form-control" id="post" required value="{{$post->title}}">
                     </div>
                     <div class="form-group">
+                        <label for="category">Categoría</label>
+                        <select class="form-control" name="category" id="category" required >
+                            <option value="{{$post->category->id}}" selected>{{$post->category->name}}</option>
+                            @foreach ($categories as $category)
+                                <option value="{{$category->id}}">{{$category->name}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
                         <label for="cont">Contenido</label>
                         <textarea type="text" name="content" class="form-control " id="cont" required  cols="50" rows="5">{{$post->content}}</textarea>
 </div>
