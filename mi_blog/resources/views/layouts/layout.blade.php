@@ -12,10 +12,12 @@
         <!-- Header -->
         <nav class="navbar navbar-light bg-main">
         <div class="container p-4">
-            <a class="navbar-brand m-auto" href="#">
-                <img src="{{asset('images/logo.png')}}" width="120" alt="" loading="lazy">
-            </a>
-        </div>
+
+                <a class="navbar-brand m-auto" href="#">
+                    <img src="{{asset('images/logo.png')}}" width="120" alt="" loading="lazy">
+                </a>
+                
+            </div>
     </nav>
 
     <!-- CONTENIDO -->

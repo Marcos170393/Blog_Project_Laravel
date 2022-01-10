@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <title>HomePage Posts</title>
 </head>
 <body>
@@ -15,6 +15,8 @@
             <a class="navbar-brand m-auto" href="#">
                 <img src="{{asset('images/logo.png')}}" width="120" alt="" loading="lazy">
             </a>
+            <a href="{{route('admin.categories')}}"class="navbar-brand m-right">Admin</a>
+
         </div>
     </nav>
   <section class="container-fluid content">
@@ -22,9 +24,9 @@
         <div class="row justify-content-center">
             <div class="col-10 col-md-12">
                 <nav class="text-center my-5">
+                    <a href="{{route('home')}}" class="mx-3 pb-3 link-category d-block d-md-inline {{ isset($categorySelected)?'':'selected-category' }}" >Todas</a>
                     @foreach ($categories as $category)
-                    <a href="#" class="mx-3 pb-3 link-category d-block d-md-inline selected-category" >{{$category->name}}</a>
-                        
+                        <a href="{{route('post.category',$category->name)}}" class="mx-3 pb-3 link-category d-block d-md-inline {{ (isset($categorySelected) && $categorySelected==$category->id)?'selected-category':''}}" >{{$category->name}}</a>
                     @endforeach
                 </nav>
             </div>
@@ -37,16 +39,15 @@
                     <!-- Posts -->
                     @foreach ($posts as $post)
                     <div class="col-md-4 col-12 justify-content-center mb-5">
-                            <a href="{{route('posts.article', $post->id)}}" class="text-decoration-none">    
                             <div class="card m-auto" style="width: 18rem;">
                                 <img class="card-img-top" src="{{asset($post->featured)}}" alt="{{$post->name}}">
                                 <div class="card-body">
-                                    <small class="card-txt-category">Categoria{{$post->category->name}}</small>
+                                    <small class="card-txt-category">Categoria <b>{{$post->category->name}}</b></small>
                                     <h5 class="card-title my-2">{{$post->title}}</h5>
                                     <div class="d-card-text">
                                     {{$post->content}}
                                     </div>
-                                    <a href="#" class="post-link"><b>Leer más</b></a>
+                                    <a href="{{route('posts.article',$post->id)}}" class="post-link"><b>Leer más</b></a>
                                     <hr>
                                     <div class="row">
                                         <div class="col-6 text-left">
@@ -58,7 +59,6 @@
                                     </div>
                                 </div>
                             </div>
-                        </a>
                         </div>
                     @endforeach
                     <!-- Posts -->

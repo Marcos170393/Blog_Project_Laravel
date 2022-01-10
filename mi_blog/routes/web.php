@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/post', [App\Http\Controllers\HomeController::class, 'post'])->name('post');
-Route::get('/post/{categoryid}','App\Http\Controllers\ArticleController@postByCategory')->name('post');
+Route::get('/post/{category}','App\Http\Controllers\HomeController@postByCategory')->name('post.category');
 Route::get('/article/{postid}','App\Http\Controllers\ArticleController@index')->name('posts.article')->middleware('auth');
 
 Route::get('/home',function(){

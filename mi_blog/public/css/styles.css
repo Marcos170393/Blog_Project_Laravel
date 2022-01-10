@@ -49,3 +49,10 @@ hr {
 .post-txt {
   color: #9D9D9D;
 }
+
+.d-card-text{
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
