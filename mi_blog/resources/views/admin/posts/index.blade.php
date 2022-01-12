@@ -16,6 +16,9 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
+@section('js')
+<script src="{{ asset('js/main.js') }}"></script>
+@stop
 
 
 
@@ -39,10 +42,10 @@
                             <th>Id</th>
                             <th>Título</th>
                             <th width="200px">Imagen</th>
-                            <th>Contenido</th>
+                            <th >Contenido</th>
                             <th>Categoría</th>
                             <th>Autor</th>
-                            <th width="120px">Acciones</th>
+                            <th width="150px">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -52,7 +55,7 @@
                            <td>{{$post->id}}</td>
                            <td>{{$post->title}}</td>
                            <td><img src="{{asset($post->featured)}}" class="img-fluid img-thumbnail" alt=""></td>
-                           <td>{{$post->content}}</td>
+                           <td name="item-desc">{{$post->content}}</td>
                            <td>{{$post->category->name}}</td>
                            <td>{{$post->author}}</td>
                            <td class="text-center">

@@ -25,6 +25,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         $categories = Catergory::all();
         $posts = Post::all();
        

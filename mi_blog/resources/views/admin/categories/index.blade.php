@@ -4,7 +4,7 @@
 
 {{--BOTON DEL MODAL --}}
 @section('content_header')
-<h1>
+<h1  id="mi-title" >
     Categorías
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-create-category">
         Crear
@@ -16,7 +16,9 @@
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
-
+@section('js')
+<script src="{{ asset('js/main.js') }}"></script>
+@stop
 
 
 @section('content')
@@ -48,7 +50,7 @@
                        <tr>
                            <td>{{$cat->id}}</td>
                            <td>{{$cat->name}}</td>
-                           <td>{{$cat->description}}</td>
+                           <td >{{$cat->description}}</td>
                            <td class="text-center">
                                <div class="row">
                                    <div class="col-6">
