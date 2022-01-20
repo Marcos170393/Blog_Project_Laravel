@@ -56,3 +56,25 @@ hr {
   -webkit-line-clamp: 4;
   overflow: hidden;
 }
+
+/* Background de home */
+.anim{
+  transition-duration: .2s ;
+}
+.anim:hover{
+  transition-duration: .2s ;
+  transform: translateY(-10px);
+  /* animation-name: card-hover ;
+  animation-duration: .2s;
+  animation-fill-mode: forwards; */
+  cursor: pointer;
+  
+}
+
+/* @keyframes card-hover {
+  0% { transform: translateY(-1px);}
+  
+  100% { ;
+    }
+} */
+

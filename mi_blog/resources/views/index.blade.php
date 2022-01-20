@@ -2,8 +2,12 @@
 
 @section('title','Post')
 
+@section('css')
+<link rel="stylesheet" href="{{asset('css/styles.css')}}">
+@endsection
+
 @section('content')
-  <section class="container-fluid content">
+  <section class="container-fluid bg-section">
         <!-- Categorías -->
         <div class="row justify-content-center">
             <div class="col-10 col-md-12">
@@ -22,8 +26,8 @@
                 <div class="row">
                     <!-- Posts -->
                     @foreach ($posts as $post)
-                    <div class="col-md-4 col-12 justify-content-center mb-5">
-                            <div class="card m-auto" style="width: 18rem;">
+                    <div class="col-md-4 col-12 justify-content-center mb-5 ">
+                            <div class="card m-auto anim" style="width: 18rem;">
                                 <img class="card-img-top" src="{{asset($post->featured)}}" alt="{{$post->name}}">
                                 <div class="card-body">
                                     <small class="card-txt-category">Categoria <b>{{$post->category->name}}</b></small>
