@@ -25,6 +25,10 @@
             <div class="col-10">
                 <div class="row">
                     <!-- Posts -->
+                    @if ($posts->count()==0)
+                        <h3 class="text-center">Aún no existen posts de esta categoría!</h3>
+                        <img class="img-fluid m-auto" src="{{asset('images\nodata.png')}}" alt="" srcset="" style="width: 30rem;">
+                    @endif
                     @foreach ($posts as $post)
                     <div class="col-md-4 col-12 justify-content-center mb-5 ">
                             <div class="card m-auto anim" style="width: 18rem;">

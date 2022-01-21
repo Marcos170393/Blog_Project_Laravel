@@ -15,13 +15,15 @@ class CreatePostsTable extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('category_id');
-            $table->foreign('category_id')->references('id')->catergories();
-            // $table->foreignId('category_id')->constrained('catergories');
+            // $table->unsignedBigInteger('category_id');
+            // $table->foreign('category_id')->references('id')->Catergories();
+            $table->foreignId('catergory_id')->constrained('catergories');
             $table->string('title');
             $table->longText('content');
+            $table->longText('featured');
             $table->string('author')->nulleable();
             $table->timestamps();
+            $table->softDeletes("deleted_at");
         });
     }
 

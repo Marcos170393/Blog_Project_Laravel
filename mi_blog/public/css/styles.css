@@ -62,6 +62,7 @@ hr {
   transition-duration: .2s ;
 }
 .anim:hover{
+  box-shadow: none !important;
   transition-duration: .2s ;
   transform: translateY(-10px);
   /* animation-name: card-hover ;
@@ -70,11 +71,4 @@ hr {
   cursor: pointer;
   
 }
-
-/* @keyframes card-hover {
-  0% { transform: translateY(-1px);}
-  
-  100% { ;
-    }
-} */
 
