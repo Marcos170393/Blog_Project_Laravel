@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title','Post')
+@section('title','Home')
 
 @section('css')
 <link rel="stylesheet" href="{{asset('css/styles.css')}}">

@@ -7,7 +7,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
     <script src="{{ asset('js/main.js') }}" defer></script>
-    <title>Mi_Blog - @yield('title')</title>
+    <title>4DEVS - @yield('title')</title>
 </head>
 <body>
         <!-- Header -->
@@ -18,13 +18,7 @@
                 <img src="{{asset('images/logo.png')}}" width="130" alt="" loading="lazy">
               </a>
             
-              @if (auth()->user()!== null)
-              <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-                <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-                <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-              </svg>
-              <a class="navbar-brand mx-2" aria-current="page" href="/">{{auth()->user()->name}}</a>
-              @else
+              @if (auth()->user()== null)
                 @if (Route::has('login'))
                       
                   <a class="navbar-brand" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -38,23 +32,30 @@
               <button class="navbar-toggler mx-2" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                     <span class="navbar-toggler-icon"></span>
                   </button>
-                  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                  <div class="offcanvas offcanvas-end" style="opacity:0.8;" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                     <div class="offcanvas-header">
                       <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                     </div>
-                    <div class="offcanvas-body">
+                    <div class="offcanvas-body " >
+                    @if (auth()->user()!== null)
+                    <div class="text-center" > 
+                      <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+                        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+                      </svg>
+                      <p>{{auth()->user()->name}}</p>
+                    </div>
+                      @endif
                       <ul class="navbar-nav justify-content-arround flex-grow-1 pe-3">
                         <li class="nav-item">
+                          <a class="nav-link text-dark" aria-current="page" href="/">Home</a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link" aria-current="page" href="/">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('admin.categories')}}"class="nav-link">Admin</a>
+                            <a href="{{route('admin.categories')}}"class="nav-link text-dark">Admin</a>
                         </li>
                         {{-- BOTON DE LOGUOT --}}
                         @if(auth()->user()!==null)
-                        <a class="nav-link" href="{{ route('logout') }}"
+                        <a class="nav-link text-dark" href="{{ route('logout') }}"
                         onclick="event.preventDefault();
                                           document.getElementById('logout-form').submit();">
                             {{ __('Logout') }}
