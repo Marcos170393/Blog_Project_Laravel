@@ -14,6 +14,10 @@ class Post extends Model
     public function category(){
         return $this->belongsTo(Catergory::class,'catergory_id');
     }
+    
+    public function commentary(){
+        return $this->hasMany(Comment::class);
+    }
 
     use SoftDeletes;
 }

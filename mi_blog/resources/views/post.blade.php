@@ -82,4 +82,48 @@
         </div>
     </section>
     
+    <div class="border shadow-sm text-center">
+        
+        <h2 class="text-success mt-4 mx-5">Dejanos tu comentario</h2>
+        <section class=" d-flex justify-content-around">
+                    <div class="col-8 p-5 ">
+                        <form action="{{route('user.comment.create', $post->id)}}" method="post">
+                            {{ csrf_field() }}
+                            <div class="form-floating">
+                                <textarea  name="comment" class="form-control" placeholder="Leave a comment here" id="floatingTextarea"></textarea>
+                                <label for="floatingTextarea">Mensaje</label>
+                            </div>
+                            <div class="modal-footer ">
+                                <button type="submit" class="btn btn-outline-primary w-100">Enviar</button>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+    </div>
+        
+        <section class="mt-5">
+            @if($commentaries->count() == 0)
+            <div class="row">
+
+                <h2 class="text-danger text-center">No hay comentarios</h2>
+                <img class="img-fluid m-auto" src="{{asset('images\bg-comment.png')}}" alt="" srcset="" style="width: 30rem;">
+            </div>
+            @else
+            <h2 class="text-info mx-5">Comentarios</h2>
+            
+            @endif
+            @foreach($commentaries as $comment)
+            <div class="col-sm-12 col-md-8 border rounded my-3 mx-5 p-2 bg-light">
+                <b>{{$comment->user->name}}</b>
+                <div class="p-2 mt-3">
+                    <p>{{$comment->comment}}</p>
+                </div>
+                <div class="text-end">
+                    <small class="text-secondary">{{$comment->created_at->diffForHumans()}}</small>
+                </div>
+            </div>
+            @endforeach
+        </section>
+        
+        
     @endsection

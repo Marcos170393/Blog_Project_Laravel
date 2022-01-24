@@ -23,5 +23,8 @@ Route::post('/admin/posts/store','App\Http\Controllers\Admin\PostsController@sto
 Route::post('/admin/posts/{postid}/update','App\Http\Controllers\Admin\PostsController@update')->name('admin.posts.update')->middleware('auth');
 Route::delete('/admin/posts/{postid}/delete','App\Http\Controllers\Admin\PostsController@delete')->name('admin.posts.delete')->middleware('auth');
 
+// CRUD COMMENTS //
+
 Auth::routes();
 
+Route::post('user/posts/comment/{postid}','App\Http\Controllers\CommentController@create')->name('user.comment.create')->middleware('auth');

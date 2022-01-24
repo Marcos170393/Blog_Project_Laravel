@@ -30,7 +30,7 @@
                         <img class="img-fluid m-auto" src="{{asset('images\nodata.png')}}" alt="" srcset="" style="width: 30rem;">
                     @endif
                     @foreach ($posts as $post)
-                    <div class="col-md-4 col-12 justify-content-center mb-5 ">
+                    <div class="col-12 col-md-6 col-lg-4 justify-content-center mb-5 ">
                             <div class="card m-auto anim" style="width: 18rem;">
                                 <img class="card-img-top" src="{{asset($post->featured)}}" alt="{{$post->name}}">
                                 <div class="card-body">
